@@ -1,32 +1,59 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-return new class extends Migration
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class User extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
+
     /**
-     * Run the migrations.
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
      */
-    public function up(): void
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
     {
-        Schema::create('table_books', function (Blueprint $table) {
-            $table->id();
-            $table->string('Name Book');
-            $table->string('Publisher');
-            $table->text('description')->nullable();
-            $table->year('Publication Year');
-            $table->string('Number of Page')->unique();
-            $table->timestamps();
-        });
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 
     /**
-     * Reverse the migrations.
+     * Check if user is an admin.
+     *
+     * @return bool
      */
-    public function down(): void
+    public function isAdmin(): bool
     {
-        Schema::dropIfExists('table_books');
+        return $this->role === 'admin';
     }
-};
+}
