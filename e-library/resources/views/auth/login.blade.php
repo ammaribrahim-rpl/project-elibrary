@@ -21,7 +21,17 @@
                     Sign in to your account
                 </p>
             </div>
-            <form class="mt-8 space-y-6" action="dashboard.html" method="GET">
+            @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                <ul class="list-disc pl-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
+                @csrf
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
                         <label for="email-address" class="sr-only">Email address</label>
@@ -29,7 +39,7 @@
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-envelope text-gray-400"></i>
                             </div>
-                            <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                            <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" value="{{ old('email') }}" placeholder="Email address">
                         </div>
                     </div>
                     <div>
@@ -70,7 +80,7 @@
                 <div class="text-center">
                     <p class="text-sm text-gray-600">
                         Don't have an account?
-                        <a href="register.html" class="font-medium text-blue-600 hover:text-blue-500">
+                        <a href="{{ route('register') }}" class="font-medium text-blue-600 hover:text-blue-500">
                             Register here
                         </a>
                     </p>
@@ -78,5 +88,38 @@
             </form>
         </div>
     </div>
+    
+    <!-- Footer -->
+    <footer class="bg-transparent mt-auto">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center">
+                <div class="flex space-x-6 mb-4">
+                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <i class="fab fa-facebook"></i>
+                        <span class="sr-only">Facebook</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <i class="fab fa-instagram"></i>
+                        <span class="sr-only">Instagram</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <i class="fab fa-twitter"></i>
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <i class="fab fa-github"></i>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 mb-4">
+                    <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Tentang Kami</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Kebijakan Privasi</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Syarat & Ketentuan</a>
+                    <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Kontak</a>
+                </div>
+                <p class="text-sm text-gray-500">&copy; 2025 E-Library. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
