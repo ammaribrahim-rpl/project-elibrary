@@ -27,8 +27,8 @@
                     @method('PUT')
                     <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
                         <div>
-                            <label for="book_name" class="block mb-2 text-sm font-medium text-gray-700">Nama Buku</label>
-                            <input type="text" id="book_name" name="book_name" value="{{ old('name', $book->name) }}"
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-700">Nama Buku</label>
+                            <input type="text" id="name" name="name" value="{{ old('name', $book->name) }}"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                 required placeholder="Masukkan nama buku">
                         </div>

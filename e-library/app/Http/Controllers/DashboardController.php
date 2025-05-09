@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     /**
-     * Create a new controller instance
-     * 
+     * Create a new controller instance.
+     *
      * @return void
      */
     public function __construct()
@@ -19,8 +19,8 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the application dashboard
-     * 
+     * Show the application dashboard.
+     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
@@ -28,7 +28,7 @@ class DashboardController extends Controller
         $totalBooks = Books::count();
         $totalUsers = User::where('role', 'user')->count();
         $books = Books::latest()->take(5)->get();
-        
+
         return view('dashboard.index', compact('totalBooks', 'totalUsers', 'books'));
     }
 }

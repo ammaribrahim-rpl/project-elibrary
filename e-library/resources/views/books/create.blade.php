@@ -27,9 +27,9 @@
                     <form action="{{ route('books.store') }}" method="POST">
                         <div class="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
                             <div>
-                                <label for="book_name" class="block mb-2 text-sm font-medium text-gray-700">Nama
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-700">Nama
                                     Buku</label>
-                                <input type="text" id="book_name" value="{{ old('name') }}" name="book_name"
+                                <input type="text" id="name" value="{{ old('name') }}" name="name"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     placeholder="Masukkan nama buku" required>
                             </div>
@@ -47,7 +47,7 @@
                                 <input type="number" id="publication_year" name="publication_year" min="1800"
                                     value="{{ old('publication_year') }}" max="2099"
                                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                    required>
+                                    placeholder="Masukkan tahun terbit" required>
                             </div>
 
                             <div>
@@ -65,61 +65,6 @@
                             <textarea id="description" name="description" rows="4"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                 required placeholder="Masukkan deskripsi buku">{{ old('description') }}</textarea>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="cover_image" class="block mb-2 text-sm font-medium text-gray-700">Cover
-                                Image</label>
-                            <div class="flex items-center">
-                                <label
-                                    class="flex flex-col items-center px-4 py-2 bg-white text-blue-500 rounded-md border border-blue-500 cursor-pointer hover:bg-blue-500 hover:text-white">
-                                    <i class="fas fa-upload mr-2"></i>
-                                    <span class="text-sm">Select file</span>
-                                    <input type="file" class="hidden" id="cover_image" name="cover_image">
-                                </label>
-                                <span class="ml-3 text-sm text-gray-500" id="file_name">No file selected</span>
-                            </div>
-                        </div>
-
-                        <div class="mb-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-700">Categories</label>
-                            <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="fiction" name="categories[]" value="fiction"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="fiction" class="ml-2 text-sm text-gray-700">Fiction</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="non_fiction" name="categories[]" value="non_fiction"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="non_fiction" class="ml-2 text-sm text-gray-700">Non-Fiction</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="science" name="categories[]" value="science"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="science" class="ml-2 text-sm text-gray-700">Science</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="history" name="categories[]" value="history"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="history" class="ml-2 text-sm text-gray-700">History</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="biography" name="categories[]" value="biography"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="biography" class="ml-2 text-sm text-gray-700">Biography</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="fantasy" name="categories[]" value="fantasy"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="fantasy" class="ml-2 text-sm text-gray-700">Fantasy</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input type="checkbox" id="mystery" name="categories[]" value="mystery"
-                                        class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                                    <label for="mystery" class="ml-2 text-sm text-gray-700">Mystery</label>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="flex justify-end">

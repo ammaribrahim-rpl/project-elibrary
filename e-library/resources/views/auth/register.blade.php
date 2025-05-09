@@ -34,21 +34,21 @@
                 @csrf
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
-                        <label for="full-name" class="sr-only">Full Name</label>
+                        <label for="name" class="sr-only">Full Name</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-user text-gray-400"></i>
                             </div>
-                            <input id="full-name" name="full-name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" value="{{ old('name') }}" placeholder="Full Name">
+                            <input id="name" name="name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" value="{{ old('name') }}" placeholder="Full Name">
                         </div>
                     </div>
                     <div>
-                        <label for="email-address" class="sr-only">Email address</label>
+                        <label for="email" class="sr-only">Email address</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-envelope text-gray-400"></i>
                             </div>
-                            <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" value="{{ old('email') }}" placeholder="Email address">
+                            <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" value="{{ old('email') }}" placeholder="Email address">
                         </div>
                     </div>
                     <div>

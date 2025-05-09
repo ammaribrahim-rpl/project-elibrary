@@ -46,12 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     /**
-     * Check if user is Admin
-     * 
+     * Check if user is an admin.
+     *
      * @return bool
      */
-    public function isAdmin(): bool{
-        return $this->role === 'admin';
+    public function isAdmin(): bool
+    {
+    return $this->role === 'admin';
     }
 }

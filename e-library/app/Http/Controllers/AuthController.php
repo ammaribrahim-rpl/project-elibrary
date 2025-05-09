@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Auth\Events\Logout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +19,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Handle Login Request
+     * Handle login request.
      */
     public function login(Request $request)
     {
@@ -32,40 +31,40 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $request->sesssion()->regenerate();
+            $request->session()->regenerate();
 
             return redirect()->intended('dashboard');
         }
-        
-        return back()->withErrors([
-            'email' => 'The Provided Credentials Do Not Match Our Records',
-        ])->onlyInput('email');
 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
     /**
-     * Show Registration Form.
+     * Show the registration form.
      */
-    public function showRegistrationForm(){
+    public function showRegistrationForm()
+    {
         return view('auth.register');
     }
 
     /**
-     * Handel Regist Req.
+     * Handle registration request.
      */
     public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'require|string|min:8|confirmed',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'require|string|min:8|confirmed',
-            'role' => 'user', //Def Role User
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'user', // Default role is user
         ]);
 
         Auth::login($user);
@@ -74,9 +73,9 @@ class AuthController extends Controller
     }
 
     /**
-     * Handle Log Out Req.
+     * Handle logout request.
      */
-    public function logout(request $request)
+    public function logout(Request $request)
     {
         Auth::logout();
 
